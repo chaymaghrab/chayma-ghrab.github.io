@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE portfolio SYSTEM "portfolio.dtd">
+<portfolio>
+  <langue code="fr">
+    <identite>
+      <prenom>Chayma</prenom>
+      <nom>GHRAB</nom>
+      <age>23</age>
+      <titre>Ingénieure informatique</titre>
+      <objectif>
+        Je suis à la recherche d’un contrat d’apprentissage de 24 mois, dès septembre 2024.
+      </objectif>
+      <contact>
+        <tel>+33 07 83 90 96 06</tel>
+        <email>ghratrichayma@gmail.com</email>
+        <ville>Paris</ville>
+        <linkedin>https://www.linkedin.com/in/ghrab-chayma-305b95197/</linkedin>
+      </contact>
+      <profil>
+        Ingénieure informatique en alternance, passionnée par les technologies web et cloud, avec une bonne capacité à apprendre rapidement et à travailler en équipe.
+      </profil>
+     <langues>
+        <langueParlee niveau="C1">Français</langueParlee>
+        <langueParlee niveau="B2">Anglais</langueParlee>
+        <langueParlee niveau="A2">Espagnol</langueParlee>
+        <langueParlee niveau="maternelle">Arabe</langueParlee>
+    </langues>
+
+      <interets>Sport, Musique, Camping, Scoutisme</interets>
+    </identite>
+  </langue>
+
+  <competences>
+    <langages>Java, JavaScript, Python, C#, PHP, C, MySQL, HTML5/CSS3</langages>
+    <frameworks>Angular, Symfony, Laravel, Flutter, J2EE, WinDev20, Bootstrap</frameworks>
+  </competences>
+
+  <formation>
+    <etude annee="2023-2026">Cursus Ingénieur Informatique – Sup Galilée, Université Sorbonne Paris Nord</etude>
+    <etude annee="2022-2023">Licence 3 Informatique – Université de Picardie Jules Verne, Amiens</etude>
+    <etude annee="2019-2022">Licence Informatique – ISET Sousse, Tunisie</etude>
+    <etude annee="2019">Baccalauréat Mathématiques – Lycée 2 mars 1934 Ghomrassen, Tunisie</etude>
+  </formation>
+
+  <experience>
+    <stage date="2023-2024" entreprise="OPTEE, Paris">
+      Développement d'une application Angular+Symfony pour la gestion des opérations de rénovation énergétique.
+    </stage>
+    <stage date="2023" entreprise="Ewill Solutions, Amiens">
+      Développement Back-end Symfony, personnalisation de portes de garage, correction de bugs.
+    </stage>
+    <stage date="2022-2023" entreprise="Webify Technology, Sousse">
+      Application Laravel + Angular pour la planification de certifications EPI.
+    </stage>
+    <stage date="2021" entreprise="Hello Data, Tataouine">
+      Développement d’une application desktop de réservation hôtelière (WinDev20).
+    </stage>
+    <stage date="2021" entreprise="TTC Informatique, Sousse" />
+    <stage date="2020" entreprise="STB Banque, Sousse" />
+  </experience>
+</portfolio>

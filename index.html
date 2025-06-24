@@ -1,9 +1,237 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="fr" prefix="schema: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/">
 <head>
-  <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chayma GHRAB - Portfolio</title>
+    <meta name="description" content="Portfolio de Chayma GHRAB, Ingénieure Informatique à la recherche d'un contrat d'apprentissage">
+    <meta name="keywords" content="Chayma GHRAB, Ingénieure Informatique, Portfolio, Développement Web, Java, JavaScript, Python">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            background-size: 200% 100%;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .photo-container {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 4rem;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .photo:hover {
+            transform: scale(1.05);
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .objective {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #764ba2, #667eea);
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .contact-item {
+            display: inline-block;
+            margin: 0.5rem 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .contact-item a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .photo {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
-<body>
-  <h1>Bonjour, vous vous trouvez sur le portfolio de Chayma Ghrab.</h1>
+<body typeof="schema:Person foaf:Person">
+    <div class="container" property="schema:mainEntity">
+        <div class="photo-container">
+            <div class="photo" property="schema:image">CG</div>
+        </div>
+        
+        <h1 class="name">
+            <span property="schema:givenName foaf:givenName">Chayma</span> 
+            <span property="schema:familyName foaf:familyName">GHRAB</span>
+        </h1>
+        <h2 class="title" property="schema:jobTitle">Ingénieure Informatique</h2>
+        
+        <div class="objective" property="schema:description">
+            "Je suis à la recherche d'un contrat d'apprentissage de 24 mois, dès septembre 2024."
+        </div>
+        
+        <div class="buttons">
+            <a href="cv.html" class="btn btn-primary" property="schema:url">Voir mon CV</a>
+            <a href="mailto:ghratrichayma@gmail.com" class="btn btn-secondary" property="schema:email">Me contacter</a>
+        </div>
+        
+        <div class="contact-info" typeof="schema:ContactPoint">
+            <div class="contact-item" property="schema:telephone">📞 +33 07 83 90 96 06</div>
+            <div class="contact-item">📧 <a href="mailto:ghratrichayma@gmail.com" property="schema:email">ghratrichayma@gmail.com</a></div>
+            <div class="contact-item">
+                <span property="schema:addressLocality">📍 Paris</span>
+                <meta property="schema:addressCountry" content="FR" />
+            </div>
+            <div class="contact-item">💼 <a href="https://www.linkedin.com/in/ghrab-chayma-305b95197/" target="_blank" property="schema:sameAs foaf:account">LinkedIn</a></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

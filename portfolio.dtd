@@ -1,0 +1,37 @@
+<!ELEMENT portfolio (langue+, competences, formation, experience)>
+
+<!ELEMENT langue (identite)>
+<!ATTLIST langue code CDATA #REQUIRED>
+
+<!ELEMENT identite (prenom, nom, age, titre, objectif, contact, profil, langues, interets)>
+
+<!ELEMENT prenom (#PCDATA)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT titre (#PCDATA)>
+<!ELEMENT objectif (#PCDATA)>
+<!ELEMENT profil (#PCDATA)>
+<!ELEMENT interets (#PCDATA)>
+
+<!ELEMENT contact (tel, email, ville, linkedin)>
+<!ELEMENT tel (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT ville (#PCDATA)>
+<!ELEMENT linkedin (#PCDATA)>
+
+<!ELEMENT langues (langueParlee+)>
+<!ELEMENT langueParlee (#PCDATA)>
+<!ATTLIST langueParlee niveau CDATA #REQUIRED>
+
+<!ELEMENT competences (langages, frameworks)>
+<!ELEMENT langages (#PCDATA)>
+<!ELEMENT frameworks (#PCDATA)>
+
+<!ELEMENT formation (etude+)>
+<!ELEMENT etude (#PCDATA)>
+<!ATTLIST etude annee CDATA #REQUIRED>
+
+<!ELEMENT experience (stage+)>
+<!ELEMENT stage (#PCDATA)>
+<!ATTLIST stage date CDATA #REQUIRED>
+<!ATTLIST stage entreprise CDATA #IMPLIED>
