@@ -11,7 +11,7 @@
       <age>23</age>
       <titre>Ingénieure informatique</titre>
       <objectif>
-        Je suis à la recherche d'un contrat d'apprentissage de 24 mois, dès septembre 2024.
+       Jeune diplômée en informatique, à la recherche d’un premier emploi
       </objectif>
       <contact>
         <tel>+33 07 83 90 96 06</tel>
@@ -20,7 +20,7 @@
         <linkedin>https://www.linkedin.com/in/ghrab-chayma-305b95197/</linkedin>
       </contact>
       <profil>
-        Ingénieure informatique en alternance, passionnée par les technologies web et cloud, avec une bonne capacité à apprendre rapidement et à travailler en équipe.
+        Jeune diplômée en informatique, à la recherche d’un premier emploi. Passionnée par les technologies web et cloud, j’apprends vite et j’apprécie le travail en équipe.
       </profil>
       <langues>
         <langueParlee niveau="C1">Français</langueParlee>
@@ -68,8 +68,8 @@
       <age>23</age>
       <titre>Computer Engineer</titre>
       <objectif>
-        I am looking for a 24-month apprenticeship contract, starting September 2024.
-      </objectif>
+ Recent computer science graduate looking for a first job.
+       </objectif>
       <contact>
         <tel>+33 07 83 90 96 06</tel>
         <email>ghratrichayma@gmail.com</email>
@@ -77,7 +77,7 @@
         <linkedin>https://www.linkedin.com/in/ghrab-chayma-305b95197/</linkedin>
       </contact>
       <profil>
-        Computer engineering student in apprenticeship, passionate about web and cloud technologies, with a good ability to learn quickly and work in a team.
+       Recent computer science graduate looking for a first job. Passionate about web and cloud technologies, I am a fast learner and enjoy working in a team.
       </profil>
       <langues>
         <langueParlee niveau="C1">French</langueParlee>
@@ -120,13 +120,14 @@
   <!-- Version chinoise -->
   <langue code="zh">
     <identite>
-      <prenom>Chayma</prenom>
-      <nom>GHRAB</nom>
-      <age>23</age>
+      <prenom>夏伊玛</prenom>
+<nom>格拉卜</nom>
+
+      <age>25</age>
       <titre>计算机工程师</titre>
       <objectif>
-        我正在寻找一份为期24个月的学徒合同，从2024年9月开始。
-      </objectif>
+计算机专业应届毕业生，正在寻找第一份工作  
+    </objectif>
       <contact>
         <tel>+33 07 83 90 96 06</tel>
         <email>ghratrichayma@gmail.com</email>
@@ -134,7 +135,7 @@
         <linkedin>https://www.linkedin.com/in/ghrab-chayma-305b95197/</linkedin>
       </contact>
       <profil>
-        计算机工程学徒学生，热衷于网络和云技术，具有快速学习和团队合作的良好能力。
+计算机专业应届毕业生，正在寻找第一份工作。热爱 Web 和云技术，学习能力强，善于团队合作。
       </profil>
       <langues>
         <langueParlee niveau="C1">法语</langueParlee>
@@ -167,11 +168,12 @@
       <interets>兴趣爱好</interets>
     </labels>
     <niveauxLangue>
-      <niveau code="maternelle">母语</niveau>
-      <niveau code="C1">C1级 - 高级</niveau>
-      <niveau code="B2">B2级 - 中级</niveau>
-      <niveau code="A2">A2级 - 初级</niveau>
-    </niveauxLangue>
+  <niveau code="maternelle">母语</niveau>
+  <niveau code="C1">高级（C一）</niveau>
+  <niveau code="B2">中级（B二）</niveau>
+  <niveau code="A2">初级（A二）</niveau>
+</niveauxLangue>
+
   </langue>
 
   <competences>
