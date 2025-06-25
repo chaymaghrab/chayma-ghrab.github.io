@@ -1,11 +1,58 @@
-
 /**
- * Récupère le paramètre de langue de l'URL
- * @returns {string} 'fr', 'en', ou 'zh' (par défaut: 'fr')
+ * Détecte la langue préférée du navigateur
+ * @returns {string} 'fr', 'en', ou 'zh'
  */
+function getPreferredLanguage() {
+    const browserLang = navigator.language || navigator.userLanguage;
+    const langCode = browserLang.toLowerCase().substring(0, 2);
+    
+    // Mapper les codes de langue supportés
+    const supportedLanguages = ['fr', 'en', 'zh'];
+    return supportedLanguages.includes(langCode) ? langCode : 'fr';
+}
+
 function getLangFromURL() {
     const params = new URLSearchParams(window.location.search);
-    return params.get('lang') || 'fr';
+    const urlLang = params.get('lang');
+
+    // 1. Paramètre GET
+    if (urlLang && ['fr', 'en', 'zh'].includes(urlLang)) {
+        localStorage.setItem("lang", urlLang); // Enregistre en localStorage
+        return urlLang;
+    }
+
+    // 2. Simuler une "session" avec localStorage
+    const savedLang = localStorage.getItem("lang");
+    if (savedLang && ['fr', 'en', 'zh'].includes(savedLang)) {
+        return savedLang;
+    }
+
+    // 3. Langue du navigateur
+    const preferredLang = getPreferredLanguage();
+    if (preferredLang !== 'fr') {
+        redirectWithLanguage(preferredLang);
+        return preferredLang;
+    }
+
+    // 4. Langue par défaut
+    return 'fr';
+}
+
+
+/**
+ * Redirige vers la même page avec le paramètre de langue
+ * @param {string} lang - Code langue à ajouter
+ */
+function redirectWithLanguage(lang) {
+    if (lang !== 'fr') {
+        const currentURL = new URL(window.location.href);
+        currentURL.searchParams.set('lang', lang);
+        
+        // Éviter la boucle infinie en vérifiant si on n'est pas déjà en train de rediriger
+        if (window.location.href !== currentURL.toString()) {
+            window.location.replace(currentURL.toString());
+        }
+    }
 }
 
 /**
@@ -13,10 +60,18 @@ function getLangFromURL() {
  * @param {string} lang - Code langue ('fr', 'en', 'zh')
  */
 function changeLang(lang) {
+    // Simule un "POST" en enregistrant la langue en local
+    localStorage.setItem("lang", lang);
+
     const currentURL = new URL(window.location.href);
-    currentURL.searchParams.set('lang', lang);
+    if (lang === 'fr') {
+        currentURL.searchParams.delete('lang');
+    } else {
+        currentURL.searchParams.set('lang', lang);
+    }
     window.location.href = currentURL.toString();
 }
+
 
 /**
  * Récupère la langue actuelle via l'API PHP
@@ -72,6 +127,19 @@ function updateNavigationLinks() {
 }
 
 /**
+ * Met à jour l'état visuel des boutons de langue
+ */
+function updateLanguageButtons() {
+    const currentLang = getLangFromURL();
+    document.querySelectorAll('.language-switch button').forEach(button => {
+        button.classList.remove('active');
+        if (button.onclick.toString().includes(`'${currentLang}'`)) {
+            button.classList.add('active');
+        }
+    });
+}
+
+/**
  * Charge et applique une feuille de style XSL sur un document XML
  * @param {string} xslFile - Chemin vers le fichier XSL
  * @param {Document} xml - Document XML à transformer
@@ -97,6 +165,8 @@ function loadXSL(xslFile, xml) {
                 initializeNavigation();
                 // Mettre à jour les liens après le chargement
                 updateNavigationLinks();
+                // Mettre à jour les boutons de langue
+                updateLanguageButtons();
             } else {
                 console.error(`Failed to parse XSL file: ${xslFile}`);
                 displayError("Erreur lors du chargement du fichier XSL.");
@@ -242,6 +312,7 @@ function loadIndexXSL(xslFile, xml) {
                     setTimeout(() => {
                         initializeHomeAnimations();
                         initializeInteractions();
+                        updateLanguageButtons();
                     }, 100);
                 } else {
                     console.error("Element #index-content non trouvé");
@@ -254,7 +325,6 @@ function loadIndexXSL(xslFile, xml) {
             displayIndexError("Erreur lors du chargement du fichier XSL: " + error.message);
         });
 }
-
 
 /**
  * Validation des formulaires de contact

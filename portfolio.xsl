@@ -11,8 +11,46 @@
   <xsl:template match="/portfolio">
     <xsl:variable name="current-lang" select="langue[@code=$lang]"/>
     <xsl:variable name="labels" select="$current-lang/labels"/>
- 
- 
+    <xsl:variable name="identite" select="$current-lang/identite"/>
+
+    <!-- Header -->
+    <div class="header">
+      <h1><xsl:value-of select="$labels/cv_titre"/></h1>
+      <p>
+        <span property="schema:name">
+          <xsl:value-of select="$identite/prenom"/>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="$identite/nom"/>
+        </span>
+        <xsl:text> - </xsl:text>
+        <span property="schema:jobTitle">
+          <xsl:value-of select="$identite/titre"/>
+        </span>
+      </p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+      <div class="nav-container">
+        <a href="#identite"><xsl:value-of select="$labels/profil"/></a>
+        <a href="#competences"><xsl:value-of select="$labels/competences"/></a>
+        <a href="#formation"><xsl:value-of select="$labels/formation"/></a>
+        <a href="#experience"><xsl:value-of select="$labels/experience"/></a>
+        <a href="#langues"><xsl:value-of select="$labels/langues"/></a>
+        <a href="#interets"><xsl:value-of select="$labels/interets"/></a>
+        <div class="language-switch">
+          <button onclick="changeLang('fr')">🇫🇷 Français</button>
+          <button onclick="changeLang('en')">🇬🇧 English</button>
+          <button onclick="changeLang('zh')">🇨🇳 中文</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bouton retour -->
+    <a href="index.html" class="back-btn">
+      <xsl:value-of select="$labels/retour"/>
+    </a>
+
     <!-- Section Profil -->
     <div class="cv-section profile-section" id="identite" typeof="schema:Person foaf:Person" resource="#me">
       <xsl:apply-templates select="$current-lang/identite">
@@ -73,7 +111,7 @@
       <span property="schema:givenName foaf:firstName"><xsl:value-of select="prenom"/></span>
       <span property="schema:familyName foaf:lastName"><xsl:value-of select="nom"/></span>
     </div>
-    <div class="title" property="schema:jobTitle dc:title" xml:lang="{$lang}">
+    <div class="title" property="schema:jobTitle dc:title">
       <xsl:value-of select="titre"/>
     </div>
     <div style="margin: 1.5rem 0; font-size: 1.1rem; color: #555;" property="schema:description dc:description">
@@ -247,31 +285,31 @@
   </xsl:template>
 
   <xsl:template name="split-interests">
-  <xsl:param name="interests"/>
-  <xsl:param name="delimiter" select="', '"/>
-  <xsl:param name="position" select="1"/>
-  
-  <xsl:choose>
-    <xsl:when test="contains($interests, $delimiter)">
-      <span class="interest-tag" typeof="schema:Thing" about="#interest_{$position}">
-        <span property="schema:name dc:title">
-          <xsl:value-of select="normalize-space(substring-before($interests, $delimiter))"/>
+    <xsl:param name="interests"/>
+    <xsl:param name="delimiter" select="', '"/>
+    <xsl:param name="position" select="1"/>
+    
+    <xsl:choose>
+      <xsl:when test="contains($interests, $delimiter)">
+        <span class="interest-tag" typeof="schema:Thing" about="#interest_{$position}">
+          <span property="schema:name dc:title">
+            <xsl:value-of select="normalize-space(substring-before($interests, $delimiter))"/>
+          </span>
         </span>
-      </span>
-      <xsl:call-template name="split-interests">
-        <xsl:with-param name="interests" select="substring-after($interests, $delimiter)"/>
-        <xsl:with-param name="delimiter" select="$delimiter"/>
-        <xsl:with-param name="position" select="$position + 1"/>
-      </xsl:call-template>
-    </xsl:when>
-    <xsl:otherwise>
-      <span class="interest-tag" typeof="schema:Thing" about="#interest_{$position}">
-        <span property="schema:name dc:title">
-          <xsl:value-of select="normalize-space($interests)"/>
+        <xsl:call-template name="split-interests">
+          <xsl:with-param name="interests" select="substring-after($interests, $delimiter)"/>
+          <xsl:with-param name="delimiter" select="$delimiter"/>
+          <xsl:with-param name="position" select="$position + 1"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="interest-tag" typeof="schema:Thing" about="#interest_{$position}">
+          <span property="schema:name dc:title">
+            <xsl:value-of select="normalize-space($interests)"/>
+          </span>
         </span>
-      </span>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
 </xsl:stylesheet>

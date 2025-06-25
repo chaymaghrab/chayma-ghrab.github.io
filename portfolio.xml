@@ -43,6 +43,14 @@
       <cv_titre>Mon CV</cv_titre>
       <contact_moi>Me contacter</contact_moi>
       <voir_cv>Voir mon CV</voir_cv>
+      <titreCV>Mon CV</titreCV>
+    <retour>← Retour à l'accueil</retour>
+      <profil>Profil</profil>
+      <competences>Compétences</competences>
+      <formation>Formation</formation>
+      <experience>Expérience</experience>
+      <langues>Langues</langues>
+      <interets>Intérêts</interets>
     </labels>
     <niveauxLangue>
       <niveau code="maternelle">Langue maternelle</niveau>
@@ -92,6 +100,14 @@
       <cv_titre>My Resume</cv_titre>
       <contact_moi>Contact me</contact_moi>
       <voir_cv>View my CV</voir_cv>
+      <titreCV>My Resume</titreCV>
+      <retour>← Back to Home</retour>
+      <profil>Profile</profil>
+      <competences>Skills</competences>
+      <formation>Education</formation>
+      <experience>Experience</experience>
+      <langues>Languages</langues>
+      <interets>Interests</interets>
     </labels>
     <niveauxLangue>
       <niveau code="maternelle">Native language</niveau>
@@ -141,6 +157,14 @@
       <cv_titre>我的简历</cv_titre>
       <contact_moi>联系我</contact_moi>
       <voir_cv>查看我的简历</voir_cv>
+      <titreCV>我的简历</titreCV>
+      <retour>← 返回首页</retour>
+      <profil>个人简介</profil>
+      <competences>技能</competences>
+      <formation>教育背景</formation>
+      <experience>工作经验</experience>
+      <langues>语言</langues>
+      <interets>兴趣爱好</interets>
     </labels>
     <niveauxLangue>
       <niveau code="maternelle">母语</niveau>
