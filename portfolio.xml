@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE portfolio SYSTEM "portfolio.dtd">
 <portfolio>
+
+
+  <!-- Version française -->
   <langue code="fr">
     <identite>
       <prenom>Chayma</prenom>
@@ -8,7 +11,7 @@
       <age>23</age>
       <titre>Ingénieure informatique</titre>
       <objectif>
-        Je suis à la recherche d’un contrat d’apprentissage de 24 mois, dès septembre 2024.
+        Je suis à la recherche d'un contrat d'apprentissage de 24 mois, dès septembre 2024.
       </objectif>
       <contact>
         <tel>+33 07 83 90 96 06</tel>
@@ -19,15 +22,132 @@
       <profil>
         Ingénieure informatique en alternance, passionnée par les technologies web et cloud, avec une bonne capacité à apprendre rapidement et à travailler en équipe.
       </profil>
-     <langues>
+      <langues>
         <langueParlee niveau="C1">Français</langueParlee>
         <langueParlee niveau="B2">Anglais</langueParlee>
         <langueParlee niveau="A2">Espagnol</langueParlee>
         <langueParlee niveau="maternelle">Arabe</langueParlee>
-    </langues>
-
+      </langues>
       <interets>Sport, Musique, Camping, Scoutisme</interets>
     </identite>
+    <labels>
+      <competences>Compétences Techniques</competences>
+      <formation>Formation</formation>
+      <experience>Expérience Professionnelle</experience>
+      <langues>Langues</langues>
+      <interets>Centres d'Intérêt</interets>
+      <profil>Profil</profil>
+      <objectif>Objectif</objectif>
+      <retour>← Retour à l'accueil</retour>
+      <chargement>Chargement du CV...</chargement>
+      <cv_titre>Mon CV</cv_titre>
+      <contact_moi>Me contacter</contact_moi>
+      <voir_cv>Voir mon CV</voir_cv>
+    </labels>
+    <niveauxLangue>
+      <niveau code="maternelle">Langue maternelle</niveau>
+      <niveau code="C1">Niveau C1 - Avancé</niveau>
+      <niveau code="B2">Niveau B2 - Intermédiaire</niveau>
+      <niveau code="A2">Niveau A2 - Élémentaire</niveau>
+    </niveauxLangue>
+  </langue>
+
+  <!-- Version anglaise -->
+  <langue code="en">
+    <identite>
+      <prenom>Chayma</prenom>
+      <nom>GHRAB</nom>
+      <age>23</age>
+      <titre>Computer Engineer</titre>
+      <objectif>
+        I am looking for a 24-month apprenticeship contract, starting September 2024.
+      </objectif>
+      <contact>
+        <tel>+33 07 83 90 96 06</tel>
+        <email>ghratrichayma@gmail.com</email>
+        <ville>Paris</ville>
+        <linkedin>https://www.linkedin.com/in/ghrab-chayma-305b95197/</linkedin>
+      </contact>
+      <profil>
+        Computer engineering student in apprenticeship, passionate about web and cloud technologies, with a good ability to learn quickly and work in a team.
+      </profil>
+      <langues>
+        <langueParlee niveau="C1">French</langueParlee>
+        <langueParlee niveau="B2">English</langueParlee>
+        <langueParlee niveau="A2">Spanish</langueParlee>
+        <langueParlee niveau="maternelle">Arabic</langueParlee>
+      </langues>
+      <interets>Sport, Music, Camping, Scouting</interets>
+    </identite>
+    <labels>
+      <competences>Technical Skills</competences>
+      <formation>Education</formation>
+      <experience>Professional Experience</experience>
+      <langues>Languages</langues>
+      <interets>Interests</interets>
+      <profil>Profile</profil>
+      <objectif>Objective</objectif>
+      <retour>← Back to home</retour>
+      <chargement>Loading CV...</chargement>
+      <cv_titre>My Resume</cv_titre>
+      <contact_moi>Contact me</contact_moi>
+      <voir_cv>View my CV</voir_cv>
+    </labels>
+    <niveauxLangue>
+      <niveau code="maternelle">Native language</niveau>
+      <niveau code="C1">Level C1 - Advanced</niveau>
+      <niveau code="B2">Level B2 - Intermediate</niveau>
+      <niveau code="A2">Level A2 - Elementary</niveau>
+    </niveauxLangue>
+  </langue>
+
+  <!-- Version chinoise -->
+  <langue code="zh">
+    <identite>
+      <prenom>Chayma</prenom>
+      <nom>GHRAB</nom>
+      <age>23</age>
+      <titre>计算机工程师</titre>
+      <objectif>
+        我正在寻找一份为期24个月的学徒合同，从2024年9月开始。
+      </objectif>
+      <contact>
+        <tel>+33 07 83 90 96 06</tel>
+        <email>ghratrichayma@gmail.com</email>
+        <ville>巴黎</ville>
+        <linkedin>https://www.linkedin.com/in/ghrab-chayma-305b95197/</linkedin>
+      </contact>
+      <profil>
+        计算机工程学徒学生，热衷于网络和云技术，具有快速学习和团队合作的良好能力。
+      </profil>
+      <langues>
+        <langueParlee niveau="C1">法语</langueParlee>
+        <langueParlee niveau="B2">英语</langueParlee>
+        <langueParlee niveau="A2">西班牙语</langueParlee>
+        <langueParlee niveau="maternelle">阿拉伯语</langueParlee>
+      </langues>
+      <interets>体育, 音乐, 露营, 童军活动</interets>
+    </identite>
+    <labels>
+      <competences>技术技能</competences>
+      <formation>教育背景</formation>
+      <experience>专业经验</experience>
+      <langues>语言能力</langues>
+      <interets>兴趣爱好</interets>
+      <profil>个人简介</profil>
+      <objectif>目标</objectif>
+      <retour>← 返回主页</retour>
+      <chargement>正在加载简历...</chargement>
+      <cv_titre>我的简历</cv_titre>
+      <contact_moi>联系我</contact_moi>
+      <voir_cv>查看我的简历</voir_cv>
+    </labels>
+    <niveauxLangue>
+      <niveau code="maternelle">母语</niveau>
+      <niveau code="C1">C1级 - 高级</niveau>
+      <niveau code="B2">B2级 - 中级</niveau>
+      <niveau code="A2">A2级 - 初级</niveau>
+    </niveauxLangue>
   </langue>
 
   <competences>
@@ -36,24 +156,48 @@
   </competences>
 
   <formation>
-    <etude annee="2023-2026">Cursus Ingénieur Informatique – Sup Galilée, Université Sorbonne Paris Nord</etude>
-    <etude annee="2022-2023">Licence 3 Informatique – Université de Picardie Jules Verne, Amiens</etude>
-    <etude annee="2019-2022">Licence Informatique – ISET Sousse, Tunisie</etude>
-    <etude annee="2019">Baccalauréat Mathématiques – Lycée 2 mars 1934 Ghomrassen, Tunisie</etude>
+    <etude annee="2023-2026">
+      <fr>Cursus Ingénieur Informatique – Sup Galilée, Université Sorbonne Paris Nord</fr>
+      <en>Computer Engineering Program – Sup Galilée, Sorbonne Paris Nord University</en>
+      <zh>计算机工程课程 – Sup Galilée, 索邦巴黎北大学</zh>
+    </etude>
+    <etude annee="2022-2023">
+      <fr>Licence 3 Informatique – Université de Picardie Jules Verne, Amiens</fr>
+      <en>Bachelor's Degree in Computer Science – University of Picardie Jules Verne, Amiens</en>
+      <zh>计算机科学学士学位 – 皮卡第儒勒·凡尔纳大学，亚眠</zh>
+    </etude>
+    <etude annee="2019-2022">
+      <fr>Licence Informatique – ISET Sousse, Tunisie</fr>
+      <en>Bachelor's in Computer Science – ISET Sousse, Tunisia</en>
+      <zh>计算机科学学士 – ISET 苏塞，突尼斯</zh>
+    </etude>
+    <etude annee="2019">
+      <fr>Baccalauréat Mathématiques – Lycée 2 mars 1934 Ghomrassen, Tunisie</fr>
+      <en>Mathematics Baccalaureate – 2 March 1934 High School Ghomrassen, Tunisia</en>
+      <zh>数学学士学位 – 1934年3月2日高中，戈姆拉森，突尼斯</zh>
+    </etude>
   </formation>
 
   <experience>
     <stage date="2023-2024" entreprise="OPTEE, Paris">
-      Développement d'une application Angular+Symfony pour la gestion des opérations de rénovation énergétique.
+      <fr>Développement d'une application Angular+Symfony pour la gestion des opérations de rénovation énergétique.</fr>
+      <en>Development of an Angular+Symfony application for managing energy renovation operations.</en>
+      <zh>开发Angular+Symfony应用程序，用于管理能源改造操作。</zh>
     </stage>
     <stage date="2023" entreprise="Ewill Solutions, Amiens">
-      Développement Back-end Symfony, personnalisation de portes de garage, correction de bugs.
+      <fr>Développement Back-end Symfony, personnalisation de portes de garage, correction de bugs.</fr>
+      <en>Symfony Back-end development, garage door customization, bug fixes.</en>
+      <zh>Symfony后端开发，车库门定制，错误修复。</zh>
     </stage>
     <stage date="2022-2023" entreprise="Webify Technology, Sousse">
-      Application Laravel + Angular pour la planification de certifications EPI.
+      <fr>Application Laravel + Angular pour la planification de certifications EPI.</fr>
+      <en>Laravel + Angular application for PPE certification planning.</en>
+      <zh>Laravel + Angular应用程序，用于个人防护设备认证规划。</zh>
     </stage>
     <stage date="2021" entreprise="Hello Data, Tataouine">
-      Développement d’une application desktop de réservation hôtelière (WinDev20).
+      <fr>Développement d'une application desktop de réservation hôtelière (WinDev20).</fr>
+      <en>Development of a desktop hotel reservation application (WinDev20).</en>
+      <zh>开发桌面酒店预订应用程序（WinDev20）。</zh>
     </stage>
     <stage date="2021" entreprise="TTC Informatique, Sousse" />
     <stage date="2020" entreprise="STB Banque, Sousse" />

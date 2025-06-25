@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr" prefix="schema: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ cv: http://rdfs.org/resume-rdf/">
+<html
+  lang="fr"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:schema="https://schema.org/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  prefix="schema: https://schema.org/
+          foaf: http://xmlns.com/foaf/0.1/
+          dc: http://purl.org/dc/elements/1.1/">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +31,17 @@
                 <a href="#experience">Expérience</a>
                 <a href="#langues">Langues</a>
                 <a href="#interets">Intérêts</a>
+                <div class="language-selector">
+                    <button class="lang-btn" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="zh">ZH</button>
+                </div>
             </div>
+            
         </div>
     
         <div class="container">
+            
             <a href="index.html" class="back-btn">← Retour à l'accueil</a>
             
             <div id="cv-content">

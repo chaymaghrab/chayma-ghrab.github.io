@@ -1,4 +1,75 @@
-// ===== FONCTIONS UTILITAIRES =====
+
+/**
+ * Récupère le paramètre de langue de l'URL
+ * @returns {string} 'fr', 'en', ou 'zh' (par défaut: 'fr')
+ */
+function getLangFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('lang') || 'fr';
+}
+
+/**
+ * Change la langue en mettant à jour le paramètre d'URL
+ * @param {string} lang - Code langue ('fr', 'en', 'zh')
+ */
+function changeLang(lang) {
+    const currentURL = new URL(window.location.href);
+    currentURL.searchParams.set('lang', lang);
+    window.location.href = currentURL.toString();
+}
+
+/**
+ * Récupère la langue actuelle via l'API PHP
+ * @returns {Promise<string>} Code de langue
+ */
+async function getCurrentLang() {
+    try {
+        const response = await fetch('lang_handler.php?api=current_lang');
+        const data = await response.json();
+        return data.lang || 'fr';
+    } catch (error) {
+        console.error('Erreur lors de la récupération de la langue:', error);
+        // Fallback vers l'ancienne méthode
+        return getLangFromURL();
+    }
+}
+
+/**
+ * Génère une URL avec la langue actuelle conservée
+ * @param {string} baseUrl - URL de base (ex: 'cv.html', 'index.html')
+ * @returns {string} URL avec paramètre de langue si nécessaire
+ */
+function generateUrlWithLang(baseUrl) {
+    const currentLang = getLangFromURL();
+    if (currentLang !== 'fr') {
+        const separator = baseUrl.includes('?') ? '&' : '?';
+        return `${baseUrl}${separator}lang=${currentLang}`;
+    }
+    return baseUrl;
+}
+
+/**
+ * Met à jour tous les liens de navigation pour conserver la langue
+ */
+function updateNavigationLinks() {
+    // Mettre à jour les liens vers le CV
+    document.querySelectorAll('a[href="cv.html"]').forEach(link => {
+        link.href = generateUrlWithLang('cv.html');
+    });
+    
+    // Mettre à jour les liens vers l'accueil
+    document.querySelectorAll('a[href="index.html"]').forEach(link => {
+        link.href = generateUrlWithLang('index.html');
+    });
+    
+    // Mettre à jour les liens relatifs
+    document.querySelectorAll('a[href^="./"], a[href^="../"]').forEach(link => {
+        const originalHref = link.getAttribute('href');
+        if (originalHref.includes('.html')) {
+            link.href = generateUrlWithLang(originalHref);
+        }
+    });
+}
 
 /**
  * Charge et applique une feuille de style XSL sur un document XML
@@ -15,6 +86,8 @@ function loadXSL(xslFile, xml) {
             if (xsl) {
                 const processor = new XSLTProcessor();
                 processor.importStylesheet(xsl);
+                const lang = getLangFromURL();
+                processor.setParameter(null, 'lang', lang);
                 const resultDocument = processor.transformToFragment(xml, document);
                 const cvContent = document.getElementById("cv-content");
                 cvContent.innerHTML = '';
@@ -22,6 +95,8 @@ function loadXSL(xslFile, xml) {
                 
                 // Initialiser la navigation après le chargement du contenu
                 initializeNavigation();
+                // Mettre à jour les liens après le chargement
+                updateNavigationLinks();
             } else {
                 console.error(`Failed to parse XSL file: ${xslFile}`);
                 displayError("Erreur lors du chargement du fichier XSL.");
@@ -88,22 +163,98 @@ function loadPortfolio() {
 }
 
 /**
- * Animations d'entrée pour les éléments de la page d'accueil
+ * Charge le contenu de la page d'accueil depuis le XML
  */
-function initializeHomeAnimations() {
-    const elements = document.querySelectorAll('.photo-container, .home-name, .home-title, .home-objective, .home-buttons, .home-contact-info');
-    
-    elements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        
-        setTimeout(() => {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }, index * 200);
-    });
+function loadIndexContent() {
+    console.log("Début du chargement du contenu index...");
+    fetch("portfolio.xml")
+        .then(response => {
+            console.log("Réponse XML reçue:", response.status);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(xmlText => {
+            console.log("XML récupéré, taille:", xmlText.length);
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(xmlText, "application/xml");
+            
+            const parseError = xml.querySelector("parsererror");
+            if (parseError) {
+                throw new Error("Erreur de parsing XML: " + parseError.textContent);
+            }
+            
+            console.log("XML parsé avec succès");
+            // Charger le XSL pour la page d'accueil
+            loadIndexXSL("index.xsl", xml);
+        })
+        .catch(error => {
+            console.error('Erreur lors du chargement XML:', error);
+            displayIndexError("Erreur lors du chargement du contenu: " + error.message);
+        });
 }
+
+/**
+ * Charge et applique la feuille de style XSL pour la page d'accueil
+ */
+function loadIndexXSL(xslFile, xml) {
+    console.log("Début du chargement XSL:", xslFile);
+    fetch(xslFile)
+        .then(response => {
+            console.log("Réponse XSL reçue:", response.status);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(xslText => {
+            console.log("XSL récupéré, taille:", xslText.length);
+            const parser = new DOMParser();
+            const xsl = parser.parseFromString(xslText, "application/xml");
+            
+            const parseError = xsl.querySelector("parsererror");
+            if (parseError) {
+                throw new Error("Erreur de parsing XSL: " + parseError.textContent);
+            }
+            
+            console.log("XSL parsé avec succès");
+            
+            if (xsl) {
+                const processor = new XSLTProcessor();
+                processor.importStylesheet(xsl);
+                const lang = getLangFromURL();
+                console.log("Langue utilisée:", lang);
+                processor.setParameter(null, 'lang', lang);
+                
+                const resultDocument = processor.transformToFragment(xml, document);
+                const indexContent = document.getElementById("index-content");
+                
+                if (indexContent) {
+                    console.log("Transformation réussie, insertion du contenu");
+                    indexContent.innerHTML = '';
+                    indexContent.appendChild(resultDocument);
+                    
+                    // Vérifier si le contenu a été inséré
+                    console.log("Contenu inséré, éléments trouvés:", indexContent.children.length);
+                    
+                    // Initialiser les animations après le chargement
+                    setTimeout(() => {
+                        initializeHomeAnimations();
+                        initializeInteractions();
+                    }, 100);
+                } else {
+                    console.error("Element #index-content non trouvé");
+                    displayIndexError("Erreur: conteneur non trouvé");
+                }
+            }
+        })
+        .catch(error => {
+            console.error(`Erreur lors du chargement XSL: ${error}`);
+            displayIndexError("Erreur lors du chargement du fichier XSL: " + error.message);
+        });
+}
+
 
 /**
  * Validation des formulaires de contact
@@ -171,42 +322,52 @@ function initializeScrollEffects() {
     }
 }
 
+function displayIndexError(message) {
+    const indexContent = document.getElementById("index-content");
+    if (indexContent) {
+        indexContent.innerHTML = `<div class="error-message" style="color: #e74c3c; text-align: center; padding: 2rem;">${message}</div>`;
+    }
+}
+
+/**
+ * Animations d'entrée pour les éléments de la page d'accueil
+ */
+function initializeHomeAnimations() {
+    const elements = document.querySelectorAll('.photo-container, .name, .title, .objective, .buttons, .contact-info');
+    
+    elements.forEach((element, index) => {
+        if (element) {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            
+            setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, index * 200);
+        }
+    });
+}
+
 /**
  * Initialisation des événements au chargement du DOM
  */
 document.addEventListener("DOMContentLoaded", function() {
-    // Déterminer quelle page est chargée
-    const isHomePage = document.body.classList.contains('home-body') || document.querySelector('.home-container');
-    const isCVPage = document.body.classList.contains('cv-body') || document.getElementById('cv-content');
+    console.log("DOM chargé, initialisation...");
     
-    if (isHomePage) {
-        // Initialisation de la page d'accueil
+    // Vérifier si on est sur la page d'accueil
+    const indexContent = document.getElementById("index-content");
+    const cvContent = document.getElementById("cv-content");
+    
+    if (indexContent) {
+        // Page d'accueil
         console.log("Initialisation de la page d'accueil");
-        initializeHomeAnimations();
-        initializeInteractions();
-        
-        // Ajouter des listeners pour les boutons
-        const contactBtn = document.querySelector('.btn-secondary');
-        if (contactBtn && contactBtn.href.includes('mailto:')) {
-            contactBtn.addEventListener('click', function(e) {
-                // Optionnel : tracking des clics
-                console.log("Contact button clicked");
-            });
-        }
-        
-    } else if (isCVPage) {
-        // Initialisation de la page CV
+        loadIndexContent();
+    } else if (cvContent) {
+        // Page CV
         console.log("Initialisation de la page CV");
         loadPortfolio();
         initializeScrollEffects();
-        
-        // Ajouter un listener pour le bouton retour
-        const backBtn = document.querySelector('.back-btn');
-        if (backBtn) {
-            backBtn.addEventListener('click', function(e) {
-                console.log("Back button clicked");
-            });
-        }
     }
     
     // Initialisation commune

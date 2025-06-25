@@ -1,7 +1,15 @@
 
 <!DOCTYPE html>
-<html lang="fr" prefix="schema: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/">
-<head>
+<html
+  lang="fr"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:schema="https://schema.org/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  prefix="schema: https://schema.org/
+          foaf: http://xmlns.com/foaf/0.1/
+          dc: http://purl.org/dc/elements/1.1/">
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chayma GHRAB - Portfolio</title>
@@ -173,6 +181,22 @@
         .contact-item a:hover {
             text-decoration: underline;
         }
+        .language-switch {
+            text-align: center;
+            margin: 1rem 0;
+            }
+            .language-switch button {
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            font-weight: bold;
+            }
+            .language-switch button:hover {
+            background-color: #ccc;
+        }
 
         @media (max-width: 768px) {
             .container {
@@ -203,33 +227,13 @@
 </head>
 <body typeof="schema:Person foaf:Person">
     <div class="container" property="schema:mainEntity">
-        <div class="photo-container">
-            <div class="photo" property="schema:image">CG</div>
-        </div>
-        
-        <h1 class="name">
-            <span property="schema:givenName foaf:givenName">Chayma</span> 
-            <span property="schema:familyName foaf:familyName">GHRAB</span>
-        </h1>
-        <h2 class="title" property="schema:jobTitle">Ingénieure Informatique</h2>
-        
-        <div class="objective" property="schema:description">
-            "Je suis à la recherche d'un contrat d'apprentissage de 24 mois, dès septembre 2024."
-        </div>
-        
-        <div class="buttons">
-            <a href="cv.html" class="btn btn-primary" property="schema:url">Voir mon CV</a>
-            <a href="mailto:ghratrichayma@gmail.com" class="btn btn-secondary" property="schema:email">Me contacter</a>
-        </div>
-        
-        <div class="contact-info" typeof="schema:ContactPoint">
-            <div class="contact-item" property="schema:telephone">📞 +33 07 83 90 96 06</div>
-            <div class="contact-item">📧 <a href="mailto:ghratrichayma@gmail.com" property="schema:email">ghratrichayma@gmail.com</a></div>
-            <div class="contact-item">
-                <span property="schema:addressLocality">📍 Paris</span>
-                <meta property="schema:addressCountry" content="FR" />
-            </div>
-            <div class="contact-item">💼 <a href="https://www.linkedin.com/in/ghrab-chayma-305b95197/" target="_blank" property="schema:sameAs foaf:account">LinkedIn</a></div>
+        <div class="language-switch">
+            <button onclick="changeLang('fr')">🇫🇷 Français</button>
+            <button onclick="changeLang('en')">🇬🇧 English</button>
+            <button onclick="changeLang('zh')">🇨🇳 中文</button>
+          </div>
+          <div id="index-content">
+            <div class="loading">Chargement du portfolio...</div>
         </div>
     </div>
     <script src="script.js"></script>
