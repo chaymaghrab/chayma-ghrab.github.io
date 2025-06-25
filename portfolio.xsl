@@ -11,7 +11,8 @@
   <xsl:template match="/portfolio">
     <xsl:variable name="current-lang" select="langue[@code=$lang]"/>
     <xsl:variable name="labels" select="$current-lang/labels"/>
-
+ 
+ 
     <!-- Section Profil -->
     <div class="cv-section profile-section" id="identite" typeof="schema:Person foaf:Person" resource="#me">
       <xsl:apply-templates select="$current-lang/identite">
