@@ -1,37 +1,50 @@
 <!ELEMENT portfolio (langue+, competences, formation, experience)>
 
-<!ELEMENT langue (identite)>
+<!ELEMENT langue (identite, labels, niveauxLangue)>
 <!ATTLIST langue code CDATA #REQUIRED>
 
 <!ELEMENT identite (prenom, nom, age, titre, objectif, contact, profil, langues, interets)>
-
 <!ELEMENT prenom (#PCDATA)>
 <!ELEMENT nom (#PCDATA)>
 <!ELEMENT age (#PCDATA)>
 <!ELEMENT titre (#PCDATA)>
 <!ELEMENT objectif (#PCDATA)>
-<!ELEMENT profil (#PCDATA)>
-<!ELEMENT interets (#PCDATA)>
-
 <!ELEMENT contact (tel, email, ville, linkedin)>
 <!ELEMENT tel (#PCDATA)>
 <!ELEMENT email (#PCDATA)>
 <!ELEMENT ville (#PCDATA)>
 <!ELEMENT linkedin (#PCDATA)>
-
-<!ELEMENT langues (langueParlee+)>
+<!ELEMENT profil (#PCDATA)>
+<!ELEMENT langues (#PCDATA | langueParlee)*>
 <!ELEMENT langueParlee (#PCDATA)>
 <!ATTLIST langueParlee niveau CDATA #REQUIRED>
+<!ELEMENT interets (#PCDATA)>
 
-<!ELEMENT competences (langages, frameworks)>
+<!ELEMENT labels ANY>
+
+<!ELEMENT competences (#PCDATA | langages | frameworks)*>
 <!ELEMENT langages (#PCDATA)>
 <!ELEMENT frameworks (#PCDATA)>
 
-<!ELEMENT formation (etude+)>
-<!ELEMENT etude (#PCDATA)>
+<!ELEMENT formation (#PCDATA | etude)*>
+<!ELEMENT etude (fr, en, zh)>
 <!ATTLIST etude annee CDATA #REQUIRED>
+<!ELEMENT fr (#PCDATA)>
+<!ELEMENT en (#PCDATA)>
+<!ELEMENT zh (#PCDATA)>
 
-<!ELEMENT experience (stage+)>
-<!ELEMENT stage (#PCDATA)>
-<!ATTLIST stage date CDATA #REQUIRED>
-<!ATTLIST stage entreprise CDATA #IMPLIED>
+<!ELEMENT experience (#PCDATA | stage)*>
+<!ELEMENT stage (fr?, en?, zh?)>
+<!ATTLIST stage date CDATA #REQUIRED entreprise CDATA #REQUIRED>
+
+<!ELEMENT niveauxLangue (niveau*)>
+<!ELEMENT niveau (#PCDATA)>
+<!ATTLIST niveau code CDATA #REQUIRED>
+
+<!-- Éléments utilisés dans labels -->
+<!ELEMENT retour (#PCDATA)>
+<!ELEMENT chargement (#PCDATA)>
+<!ELEMENT cv_titre (#PCDATA)>
+<!ELEMENT contact_moi (#PCDATA)>
+<!ELEMENT voir_cv (#PCDATA)>
+<!ELEMENT titreCV (#PCDATA)>
